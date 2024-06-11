@@ -1,3 +1,6 @@
+<img src="logo.svg" width="120vw" align="right"/>
+<br>
+
 `is.not`
 =======
 Comprehensive runtime type-checking with a flexible API.

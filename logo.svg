@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <style type="text/css">
+    @media (prefers-color-scheme: dark)  { svg { color-scheme: dark  }}
+    @media (prefers-color-scheme: light) { svg { color-scheme: light }}
+
+    :root {
+      --time:       10s;
+      --dash-to:    2.2em;
+      --dot-to:     calc(var(--dash-to) / 2);
+      --i-to:       0.25em;
+      --delay-i:    calc(var(--time) / 8);
+      --delay-dots: calc(var(--time) / 5);
+      --delay-dash: calc(var(--delay-dots) * 1.1);
+      --ease-s:     ease-in-out;
+      --ease-i:     var(--ease-s);
+      --ease-dots:  var(--ease-i);
+      --ease-dash:  ease-in;
+      --playback:   infinite
+    }
+
+    svg { fill: currentColor }
+    [id^=dash] { fill: #c33 }
+
+    #s {
+      transform-origin: center;
+      animation: s var(--time) var(--playback) var(--ease-s)
+    }
+    @keyframes s {
+      25%      { transform: initial }
+      50%, 75% { transform: rotate(0.5turn) }
+      to       { transform: rotate(1turn) }
+    }
+
+    #dash-top {
+      animation: dash-top calc(var(--time) / 2) var(--playback) var(--ease-dots);
+      animation-delay: var(--delay-dash)
+    }
+    @keyframes dash-top {
+      25%, 75% { transform: initial }
+      50%      { transform: translateX(var(--dash-to)) }
+    }
+
+    #dot-top {
+      animation: dot-top calc(var(--time) / 2) var(--playback) var(--ease-dots);
+      animation-delay: var(--delay-dots)
+    }
+    @keyframes dot-top {
+      25%, 75% { transform: initial }
+      50%      { transform: translateX(var(--dot-to)) }
+    }
+
+    #i-left {
+      animation: i-left calc(var(--time) / 2) var(--playback) var(--ease-i);
+      animation-delay: var(--delay-i)
+    }
+    @keyframes i-left {
+      33%, 66% { transform: initial }
+      50%      { transform: translateX(calc(var(--i-to) * -1)) }
+    }
+
+    #i-right {
+      animation: i-right calc(var(--time) / 2) var(--playback) var(--ease-i);
+      animation-delay: var(--delay-i)
+    }
+    @keyframes i-right {
+      33%, 66% { transform: initial }
+      50%      { transform: translateX(var(--i-to)) }
+    }
+
+    #dot-bottom {
+      animation: dot-bottom calc(var(--time) / 2) var(--playback) var(--ease-dots);
+      animation-delay: var(--delay-dots)
+    }
+    @keyframes dot-bottom {
+      25%, 75% { transform: initial }
+      50%      { transform: translateX(calc(var(--dot-to) * -1)) }
+    }
+
+    #dash-bottom {
+      animation: dash-bottom calc(var(--time) / 2) var(--playback) var(--ease-dots);
+      animation-delay: var(--delay-dash)
+    }
+    @keyframes dash-bottom {
+      25%, 75% { transform: initial }
+      50%      { transform: translateX(calc(var(--dash-to) * -1)) }
+    }
+  </style>
+  <defs>
+    <path id="dash-top-def" d="M80.3 12.4H44c-4.1 0-5.8 1.3-6.4 5.4l-.2 1.3c-.6 4.1.4 5.4 4.5 5.4h36.4c4.1 0 5.7-1.3 6.4-5.4l.3-1.3c.7-4.1-.6-5.4-4.7-5.4"/>
+
+    <path id="dash-bottom-def" d="M54 71.3H17.7c-4.1 0-5.8 1.4-6.4 5.4l-.2 1.3c-.7 4.1.4 5.4 4.5 5.4H52c4.1 0 5.6-1.3 6.4-5.4l.3-1.3c.5-4.1-.6-5.4-4.7-5.4"/>
+
+    <clipPath id="dash-top-mask">
+      <use href="#dash-top-def"/>
+    </clipPath>
+    <clipPath id="dash-bottom-mask">
+      <use href="#dash-bottom-def"/>
+    </clipPath>
+  </defs>
+
+  <path id="dot-top" d="M25.9 24.6c-4.1 0-5.1-1.3-4.5-5.4l.2-1.3c.6-4.1 2.3-5.4 6.4-5.4h1.4c4.1 0 5.3 1.3 4.5 5.4l-.3 1.3c-.6 4.1-2.2 5.4-6.4 5.4z"/>
+  <path id="i-left" d="M16.2 66.5c-1.9 0-2.5-.6-2.1-2.7l6.8-32.1c.5-2 1.1-2.6 3.1-2.6h3.6c2 0 2.5.6 2.2 2.6l-4.5 32.1c-.3 2-1.2 2.7-3.2 2.7z"/>
+
+  <g clip-path="url(#dash-top-mask)">
+    <use id="dash-top" href="#dash-top-def"/>
+  </g>
+
+  <path id="i-right" d="M79.7 29.4c2 0 2.5.7 2.2 2.7L75 64.2c-.5 2-1.1 2.6-3 2.6h-3.7c-2 0-2.5-.7-2.2-2.6l4.6-32.1c.3-2 1.1-2.7 3.1-2.7z"/>
+  <path id="dot-bottom" d="M70.1 71.4c4.1 0 5.2 1.3 4.5 5.4l-.3 1.3c-.8 4.1-2.2 5.4-6.4 5.4h-1.5c-4.1 0-5.1-1.3-4.5-5.4l.2-1.3c.6-4 2.3-5.4 6.4-5.4z"/>
+
+  <path id="s" d="M51.2 28c7.8 0 12.6 2.6 14.5 7.8.7 2 .1 3-2 3.9l-4.3 1.7c-2.3.8-2.5.6-3.5-1.2-1-1.7-3.1-2.6-6-2.6-3.6 0-5.5.9-5.9 2.6-.4 2.1 1.2 2.8 6.5 3.3 9.9 1.1 14.6 4.4 13.2 12.6-1.4 7.6-7.9 12-18.4 12q-13.35 0-15.3-8.7-.6-2.7 2.4-3.6l4.7-1.5c2.1-.6 2.5-.3 3.3 1.5s2.8 2.8 6.1 2.8c4.1 0 6.4-1 6.8-3 .4-2.3-1.2-2.9-7.1-3.5-4.1-.4-7.1-1.3-9.7-3.1s-3.8-5.1-3-9.5C35 32.1 41 28 51.2 28"/>
+
+  <g clip-path="url(#dash-bottom-mask)">
+    <use id="dash-bottom" href="#dash-bottom-def"/>
+  </g>
+</svg>
